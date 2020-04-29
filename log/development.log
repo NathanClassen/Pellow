@@ -1,0 +1,988 @@
+Started GET "/" for 127.0.0.1 at 2020-04-27 17:11:21 -0500
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.2ms)
+[Webpacker] Compiling…
+[Webpacker] Compilation failed:
+yarn run v1.19.1
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+warning From Yarn 1.0 onwards, scripts don't require "--" for options to be forwarded. In a future version, any explicit "--" will be forwarded as-is to the scripts.
+error Command "webpack" not found.
+
+Completed 500 Internal Server Error in 1775ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application.js in /Users/nathanhayes/Desktop/projects/atrello/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. Webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your Webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+     6: 
+     7:     <%= stylesheet_link_tag    'application', media: 'all' %>
+     8:     <%= javascript_include_tag 'application' %>
+     9:     <%= javascript_pack_tag 'application' %>
+    10:   </head>
+    11: 
+    12:   <body>
+  
+app/views/layouts/application.html.erb:9:in `_app_views_layouts_application_html_erb__1683195078989832414_70266910517740'
+Started GET "/" for 127.0.0.1 at 2020-04-27 17:13:06 -0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /Users/nathanhayes/Desktop/projects/atrello/public/packs
+Completed 200 OK in 7403ms (Views: 7400.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/boards" for 127.0.0.1 at 2020-04-27 17:13:15 -0500
+Processing by Api::BoardsController#index as JSON
+  Rendering api/boards/index.json.jbuilder
+  [1m[36mBoard Load (1.0ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  Rendered api/boards/index.json.jbuilder (24.6ms)
+Completed 200 OK in 52ms (Views: 29.7ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/api/boards/12" for 127.0.0.1 at 2020-04-27 17:13:17 -0500
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"12"}
+  [1m[36mBoard Load (0.5ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."board_id" = $1[0m  [["board_id", 12]]
+  [1m[36mCard Load (0.7ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 28]]
+  [1m[36mCard Load (0.5ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 29]]
+  [1m[36mCard Load (0.4ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 30]]
+  Rendered api/boards/show.json.jbuilder (79.1ms)
+Completed 200 OK in 99ms (Views: 80.6ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/api/cards/58" for 127.0.0.1 at 2020-04-27 17:13:24 -0500
+Processing by Api::CardsController#show as JSON
+  Parameters: {"id"=>"58"}
+  [1m[36mCard Load (0.5ms)[0m  [1m[34mSELECT  "cards".* FROM "cards" WHERE "cards"."id" = $1 LIMIT $2[0m  [["id", 58], ["LIMIT", 1]]
+  Rendering api/cards/show.json.jbuilder
+  [1m[36mList Load (0.7ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mCardAction Load (7.2ms)[0m  [1m[34mSELECT "card_actions".* FROM "card_actions" WHERE "card_actions"."card_id" = $1[0m  [["card_id", 58]]
+  [1m[36mComment Load (6.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."card_id" = $1[0m  [["card_id", 58]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."card_id" = $1[0m  [["card_id", 58]]
+  Rendered api/cards/show.json.jbuilder (59.9ms)
+Completed 200 OK in 84ms (Views: 54.1ms | ActiveRecord: 22.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-04-27 17:13:35 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 31ms (Views: 28.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/boards" for 127.0.0.1 at 2020-04-27 17:13:35 -0500
+Processing by Api::BoardsController#index as JSON
+  Rendering api/boards/index.json.jbuilder
+  [1m[36mBoard Load (1.3ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  Rendered api/boards/index.json.jbuilder (9.4ms)
+Completed 200 OK in 28ms (Views: 22.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/boards/12" for 127.0.0.1 at 2020-04-27 17:14:56 -0500
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"12"}
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."board_id" = $1[0m  [["board_id", 12]]
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 28]]
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 29]]
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 30]]
+  Rendered api/boards/show.json.jbuilder (12.1ms)
+Completed 200 OK in 31ms (Views: 24.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-04-27 17:15:05 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 30ms (Views: 27.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/boards" for 127.0.0.1 at 2020-04-27 17:15:05 -0500
+Processing by Api::BoardsController#index as JSON
+  Rendering api/boards/index.json.jbuilder
+  [1m[36mBoard Load (0.6ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  Rendered api/boards/index.json.jbuilder (26.5ms)
+Completed 200 OK in 44ms (Views: 39.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/boards" for 127.0.0.1 at 2020-04-27 17:15:47 -0500
+Processing by Api::BoardsController#create as JSON
+  Parameters: {"board"=>{"title"=>"Classics"}}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.4ms)[0m  [1m[32mINSERT INTO "boards" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Classics"], ["created_at", "2020-04-27 22:15:47.860540"], ["updated_at", "2020-04-27 22:15:47.860540"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/boards/create.json.jbuilder
+  Rendered api/boards/create.json.jbuilder (0.5ms)
+Completed 201 Created in 20ms (Views: 8.8ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/api/boards/13" for 127.0.0.1 at 2020-04-27 17:15:49 -0500
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"13"}
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."board_id" = $1[0m  [["board_id", 13]]
+  Rendered api/boards/show.json.jbuilder (2.6ms)
+Completed 200 OK in 21ms (Views: 15.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/lists" for 127.0.0.1 at 2020-04-27 17:17:57 -0500
+Processing by Api::ListsController#create as JSON
+  Parameters: {"board_id"=>13, "list"=>{"title"=>"The Novel  - Reading History through Novel"}}
+Can't verify CSRF token authenticity.
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.6ms)[0m  [1m[32mINSERT INTO "lists" ("title", "board_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Novel  - Reading History through Novel"], ["board_id", 13], ["created_at", "2020-04-27 22:17:57.566950"], ["updated_at", "2020-04-27 22:17:57.566950"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/lists/create.json.jbuilder
+  Rendered api/lists/create.json.jbuilder (0.5ms)
+Completed 200 OK in 21ms (Views: 9.1ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/boards/13" for 127.0.0.1 at 2020-04-27 17:18:01 -0500
+Processing by HomeController#index as HTML
+  Parameters: {"id"=>"13"}
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 26ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started PUT "/api/lists/31" for 127.0.0.1 at 2020-04-27 17:18:01 -0500
+Processing by Api::ListsController#update as JSON
+  Parameters: {"title"=>"The Novel  - Reading History through Novel", "id"=>"31", "list"=>{"title"=>"The Novel  - Reading History through Novel"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBoard Load (0.4ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/lists/update.json.jbuilder
+  Rendered api/lists/update.json.jbuilder (0.7ms)
+Completed 200 OK in 20ms (Views: 13.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/boards/13" for 127.0.0.1 at 2020-04-27 17:18:02 -0500
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"13"}
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mList Load (0.4ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."board_id" = $1[0m  [["board_id", 13]]
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 31]]
+  Rendered api/boards/show.json.jbuilder (5.9ms)
+Completed 200 OK in 22ms (Views: 16.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/boards/13" for 127.0.0.1 at 2020-04-27 17:18:04 -0500
+Processing by HomeController#index as HTML
+  Parameters: {"id"=>"13"}
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 25ms (Views: 22.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/boards/13" for 127.0.0.1 at 2020-04-27 17:18:04 -0500
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"13"}
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mList Load (0.4ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."board_id" = $1[0m  [["board_id", 13]]
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 31]]
+  Rendered api/boards/show.json.jbuilder (6.1ms)
+Completed 200 OK in 22ms (Views: 16.7ms | ActiveRecord: 0.8ms)
+
+
+Started PUT "/api/lists/31" for 127.0.0.1 at 2020-04-27 17:18:12 -0500
+Processing by Api::ListsController#update as JSON
+  Parameters: {"title"=>"The Novel  - Reading History Novel", "id"=>"31", "list"=>{"title"=>"The Novel  - Reading History Novel"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "lists" SET "title" = $1, "updated_at" = $2 WHERE "lists"."id" = $3[0m  [["title", "The Novel  - Reading History Novel"], ["updated_at", "2020-04-27 22:18:12.013796"], ["id", 31]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/lists/update.json.jbuilder
+  Rendered api/lists/update.json.jbuilder (0.5ms)
+Completed 200 OK in 19ms (Views: 7.8ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/boards/13" for 127.0.0.1 at 2020-04-27 17:18:15 -0500
+Processing by HomeController#index as HTML
+  Parameters: {"id"=>"13"}
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 24ms (Views: 21.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/boards/13" for 127.0.0.1 at 2020-04-27 17:18:16 -0500
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"13"}
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mList Load (0.4ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."board_id" = $1[0m  [["board_id", 13]]
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 31]]
+  Rendered api/boards/show.json.jbuilder (5.1ms)
+Completed 200 OK in 30ms (Views: 21.4ms | ActiveRecord: 0.9ms)
+
+
+Started PUT "/api/lists/31" for 127.0.0.1 at 2020-04-27 17:18:45 -0500
+Processing by Api::ListsController#update as JSON
+  Parameters: {"title"=>"The Novel ", "id"=>"31", "list"=>{"title"=>"The Novel "}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "lists" SET "title" = $1, "updated_at" = $2 WHERE "lists"."id" = $3[0m  [["title", "The Novel "], ["updated_at", "2020-04-27 22:18:45.465648"], ["id", 31]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/lists/update.json.jbuilder
+  Rendered api/lists/update.json.jbuilder (0.5ms)
+Completed 200 OK in 21ms (Views: 9.0ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:19:22 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>31, "card"=>{"title"=>"Don Quixote"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Don Quixote"], ["list_id", 31], ["created_at", "2020-04-27 22:19:22.686073"], ["updated_at", "2020-04-27 22:19:22.686073"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to The Novel "], ["card_id", 59], ["created_at", "2020-04-27 22:19:22.693854"], ["updated_at", "2020-04-27 22:19:22.693854"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 24ms (Views: 9.2ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:19:38 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>31, "card"=>{"title"=>"The Pilgrims Progress"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Pilgrims Progress"], ["list_id", 31], ["created_at", "2020-04-27 22:19:38.634396"], ["updated_at", "2020-04-27 22:19:38.634396"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to The Novel "], ["card_id", 60], ["created_at", "2020-04-27 22:19:38.635899"], ["updated_at", "2020-04-27 22:19:38.635899"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.9ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:19:48 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>31, "card"=>{"title"=>"Gullivers Travels"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Gullivers Travels"], ["list_id", 31], ["created_at", "2020-04-27 22:19:48.166479"], ["updated_at", "2020-04-27 22:19:48.166479"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to The Novel "], ["card_id", 61], ["created_at", "2020-04-27 22:19:48.167919"], ["updated_at", "2020-04-27 22:19:48.167919"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 8.7ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:20:06 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>31, "card"=>{"title"=>"Pride and Prejudice"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Pride and Prejudice"], ["list_id", 31], ["created_at", "2020-04-27 22:20:06.188355"], ["updated_at", "2020-04-27 22:20:06.188355"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to The Novel "], ["card_id", 62], ["created_at", "2020-04-27 22:20:06.189822"], ["updated_at", "2020-04-27 22:20:06.189822"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.7ms)
+Completed 200 OK in 23ms (Views: 9.5ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:20:13 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>31, "card"=>{"title"=>"Oliver Twist"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Oliver Twist"], ["list_id", 31], ["created_at", "2020-04-27 22:20:13.772407"], ["updated_at", "2020-04-27 22:20:13.772407"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to The Novel "], ["card_id", 63], ["created_at", "2020-04-27 22:20:13.773758"], ["updated_at", "2020-04-27 22:20:13.773758"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.9ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:20:26 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>31, "card"=>{"title"=>"Jane Eyre"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.2ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Jane Eyre"], ["list_id", 31], ["created_at", "2020-04-27 22:20:26.815679"], ["updated_at", "2020-04-27 22:20:26.815679"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to The Novel "], ["card_id", 64], ["created_at", "2020-04-27 22:20:26.823421"], ["updated_at", "2020-04-27 22:20:26.823421"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.7ms | ActiveRecord: 7.4ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:20:35 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>31, "card"=>{"title"=>"The Scarlet Letter"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Scarlet Letter"], ["list_id", 31], ["created_at", "2020-04-27 22:20:35.245283"], ["updated_at", "2020-04-27 22:20:35.245283"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to The Novel "], ["card_id", 65], ["created_at", "2020-04-27 22:20:35.246612"], ["updated_at", "2020-04-27 22:20:35.246612"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.9ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:20:54 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>31, "card"=>{"title"=>"Crime and Punishment"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Crime and Punishment"], ["list_id", 31], ["created_at", "2020-04-27 22:20:54.186945"], ["updated_at", "2020-04-27 22:20:54.186945"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to The Novel "], ["card_id", 66], ["created_at", "2020-04-27 22:20:54.188539"], ["updated_at", "2020-04-27 22:20:54.188539"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 23ms (Views: 9.1ms | ActiveRecord: 7.2ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:21:10 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>31, "card"=>{"title"=>"Heart of Darkness"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Heart of Darkness"], ["list_id", 31], ["created_at", "2020-04-27 22:21:10.382673"], ["updated_at", "2020-04-27 22:21:10.382673"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to The Novel "], ["card_id", 67], ["created_at", "2020-04-27 22:21:10.384001"], ["updated_at", "2020-04-27 22:21:10.384001"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.8ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/cards/67" for 127.0.0.1 at 2020-04-27 17:21:12 -0500
+Processing by Api::CardsController#show as JSON
+  Parameters: {"id"=>"67"}
+  [1m[36mCard Load (0.6ms)[0m  [1m[34mSELECT  "cards".* FROM "cards" WHERE "cards"."id" = $1 LIMIT $2[0m  [["id", 67], ["LIMIT", 1]]
+  Rendering api/cards/show.json.jbuilder
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mCardAction Load (0.3ms)[0m  [1m[34mSELECT "card_actions".* FROM "card_actions" WHERE "card_actions"."card_id" = $1[0m  [["card_id", 67]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."card_id" = $1[0m  [["card_id", 67]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."card_id" = $1[0m  [["card_id", 67]]
+  Rendered api/cards/show.json.jbuilder (7.2ms)
+Completed 200 OK in 24ms (Views: 18.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/cards/59" for 127.0.0.1 at 2020-04-27 17:21:18 -0500
+Processing by Api::CardsController#show as JSON
+  Parameters: {"id"=>"59"}
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT  "cards".* FROM "cards" WHERE "cards"."id" = $1 LIMIT $2[0m  [["id", 59], ["LIMIT", 1]]
+  Rendering api/cards/show.json.jbuilder
+  [1m[36mList Load (0.5ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mCardAction Load (0.4ms)[0m  [1m[34mSELECT "card_actions".* FROM "card_actions" WHERE "card_actions"."card_id" = $1[0m  [["card_id", 59]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."card_id" = $1[0m  [["card_id", 59]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."card_id" = $1[0m  [["card_id", 59]]
+  Rendered api/cards/show.json.jbuilder (7.3ms)
+Completed 200 OK in 20ms (Views: 15.0ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/api/lists" for 127.0.0.1 at 2020-04-27 17:22:12 -0500
+Processing by Api::ListsController#create as JSON
+  Parameters: {"board_id"=>13, "list"=>{"title"=>"Autobiography and Memoire"}}
+Can't verify CSRF token authenticity.
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "lists" ("title", "board_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Autobiography and Memoire"], ["board_id", 13], ["created_at", "2020-04-27 22:22:12.102546"], ["updated_at", "2020-04-27 22:22:12.102546"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/lists/create.json.jbuilder
+  Rendered api/lists/create.json.jbuilder (0.5ms)
+Completed 200 OK in 18ms (Views: 8.7ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:22:39 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>32, "card"=>{"title"=>"The Confessions\nSt. Augustine"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Confessions\nSt. Augustine"], ["list_id", 32], ["created_at", "2020-04-27 22:22:39.609220"], ["updated_at", "2020-04-27 22:22:39.609220"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Autobiography and Memoire"], ["card_id", 68], ["created_at", "2020-04-27 22:22:39.611121"], ["updated_at", "2020-04-27 22:22:39.611121"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 19ms (Views: 9.0ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/cards/68" for 127.0.0.1 at 2020-04-27 17:22:42 -0500
+Processing by Api::CardsController#show as JSON
+  Parameters: {"id"=>"68"}
+  [1m[36mCard Load (0.4ms)[0m  [1m[34mSELECT  "cards".* FROM "cards" WHERE "cards"."id" = $1 LIMIT $2[0m  [["id", 68], ["LIMIT", 1]]
+  Rendering api/cards/show.json.jbuilder
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mCardAction Load (0.2ms)[0m  [1m[34mSELECT "card_actions".* FROM "card_actions" WHERE "card_actions"."card_id" = $1[0m  [["card_id", 68]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."card_id" = $1[0m  [["card_id", 68]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."card_id" = $1[0m  [["card_id", 68]]
+  Rendered api/cards/show.json.jbuilder (6.6ms)
+Completed 200 OK in 22ms (Views: 15.6ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:23:16 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>32, "card"=>{"title"=>"Meditations - Rene Descartes"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.6ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Meditations - Rene Descartes"], ["list_id", 32], ["created_at", "2020-04-27 22:23:16.275524"], ["updated_at", "2020-04-27 22:23:16.275524"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Autobiography and Memoire"], ["card_id", 69], ["created_at", "2020-04-27 22:23:16.277658"], ["updated_at", "2020-04-27 22:23:16.277658"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 27ms (Views: 16.3ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:23:38 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>32, "card"=>{"title"=>"Walden - Henry David Thoreau"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Walden - Henry David Thoreau"], ["list_id", 32], ["created_at", "2020-04-27 22:23:38.771865"], ["updated_at", "2020-04-27 22:23:38.771865"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Autobiography and Memoire"], ["card_id", 70], ["created_at", "2020-04-27 22:23:38.773320"], ["updated_at", "2020-04-27 22:23:38.773320"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 8.9ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:23:56 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>32, "card"=>{"title"=>"Up from Slavery - Booker T Washington"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Up from Slavery - Booker T Washington"], ["list_id", 32], ["created_at", "2020-04-27 22:23:56.583910"], ["updated_at", "2020-04-27 22:23:56.583910"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Autobiography and Memoire"], ["card_id", 71], ["created_at", "2020-04-27 22:23:56.585915"], ["updated_at", "2020-04-27 22:23:56.585915"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.7ms)
+Completed 200 OK in 23ms (Views: 8.9ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:24:31 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>32, "card"=>{"title"=>"Ecce Homo - Friddrich Nietzsche"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Ecce Homo - Friddrich Nietzsche"], ["list_id", 32], ["created_at", "2020-04-27 22:24:31.443619"], ["updated_at", "2020-04-27 22:24:31.443619"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Autobiography and Memoire"], ["card_id", 72], ["created_at", "2020-04-27 22:24:31.445097"], ["updated_at", "2020-04-27 22:24:31.445097"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 8.7ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:24:54 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>32, "card"=>{"title"=>"Surprised By Joy - C.S. Lewis"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Surprised By Joy - C.S. Lewis"], ["list_id", 32], ["created_at", "2020-04-27 22:24:54.295320"], ["updated_at", "2020-04-27 22:24:54.295320"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Autobiography and Memoire"], ["card_id", 73], ["created_at", "2020-04-27 22:24:54.296777"], ["updated_at", "2020-04-27 22:24:54.296777"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 8.7ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/api/lists" for 127.0.0.1 at 2020-04-27 17:26:04 -0500
+Processing by Api::ListsController#create as JSON
+  Parameters: {"board_id"=>13, "list"=>{"title"=>"Histories"}}
+Can't verify CSRF token authenticity.
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "lists" ("title", "board_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Histories"], ["board_id", 13], ["created_at", "2020-04-27 22:26:04.880422"], ["updated_at", "2020-04-27 22:26:04.880422"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/lists/create.json.jbuilder
+  Rendered api/lists/create.json.jbuilder (0.5ms)
+Completed 200 OK in 15ms (Views: 8.6ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:26:19 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>33, "card"=>{"title"=>"The Histories - Herodotus"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Histories - Herodotus"], ["list_id", 33], ["created_at", "2020-04-27 22:26:19.333599"], ["updated_at", "2020-04-27 22:26:19.333599"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Histories"], ["card_id", 74], ["created_at", "2020-04-27 22:26:19.335055"], ["updated_at", "2020-04-27 22:26:19.335055"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.7ms)
+Completed 200 OK in 22ms (Views: 9.0ms | ActiveRecord: 6.9ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:26:56 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>33, "card"=>{"title"=>"The Peloponnesian War - Thucydides"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.1ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Peloponnesian War - Thucydides"], ["list_id", 33], ["created_at", "2020-04-27 22:26:56.061599"], ["updated_at", "2020-04-27 22:26:56.061599"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Histories"], ["card_id", 75], ["created_at", "2020-04-27 22:26:56.062746"], ["updated_at", "2020-04-27 22:26:56.062746"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 8.6ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:27:03 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>33, "card"=>{"title"=>"The Republic - Plato"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Republic - Plato"], ["list_id", 33], ["created_at", "2020-04-27 22:27:03.801145"], ["updated_at", "2020-04-27 22:27:03.801145"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Histories"], ["card_id", 76], ["created_at", "2020-04-27 22:27:03.802689"], ["updated_at", "2020-04-27 22:27:03.802689"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 8.7ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:27:17 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>33, "card"=>{"title"=>"Lives - Plutarch"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Lives - Plutarch"], ["list_id", 33], ["created_at", "2020-04-27 22:27:17.192007"], ["updated_at", "2020-04-27 22:27:17.192007"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Histories"], ["card_id", 77], ["created_at", "2020-04-27 22:27:17.193457"], ["updated_at", "2020-04-27 22:27:17.193457"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 23ms (Views: 8.9ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:27:31 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>33, "card"=>{"title"=>"The City of God - St. Augustine"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The City of God - St. Augustine"], ["list_id", 33], ["created_at", "2020-04-27 22:27:31.406059"], ["updated_at", "2020-04-27 22:27:31.406059"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Histories"], ["card_id", 78], ["created_at", "2020-04-27 22:27:31.407405"], ["updated_at", "2020-04-27 22:27:31.407405"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 8.8ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:27:57 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>33, "card"=>{"title"=>"The Ecclesiastical History of the English People - Bede"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Ecclesiastical History of the English People - Bede"], ["list_id", 33], ["created_at", "2020-04-27 22:27:57.528398"], ["updated_at", "2020-04-27 22:27:57.528398"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Histories"], ["card_id", 79], ["created_at", "2020-04-27 22:27:57.529704"], ["updated_at", "2020-04-27 22:27:57.529704"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 8.6ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:28:29 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>33, "card"=>{"title"=>"The True End of Civil Government - John Locke"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The True End of Civil Government - John Locke"], ["list_id", 33], ["created_at", "2020-04-27 22:28:29.128087"], ["updated_at", "2020-04-27 22:28:29.128087"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Histories"], ["card_id", 80], ["created_at", "2020-04-27 22:28:29.129350"], ["updated_at", "2020-04-27 22:28:29.129350"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.8ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:29:10 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>33, "card"=>{"title"=>"The History of the Decline and Fall of the Roman Empire - Edward Gibbon"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The History of the Decline and Fall of the Roman Empire - Edward Gibbon"], ["list_id", 33], ["created_at", "2020-04-27 22:29:10.979283"], ["updated_at", "2020-04-27 22:29:10.979283"]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Histories"], ["card_id", 81], ["created_at", "2020-04-27 22:29:10.980566"], ["updated_at", "2020-04-27 22:29:10.980566"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.7ms | ActiveRecord: 7.2ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:29:47 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>33, "card"=>{"title"=>"A Vindication of the Rights of Women - Mary Wollstonecraft"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "A Vindication of the Rights of Women - Mary Wollstonecraft"], ["list_id", 33], ["created_at", "2020-04-27 22:29:47.110939"], ["updated_at", "2020-04-27 22:29:47.110939"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Histories"], ["card_id", 82], ["created_at", "2020-04-27 22:29:47.112307"], ["updated_at", "2020-04-27 22:29:47.112307"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.9ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:30:29 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>33, "card"=>{"title"=>"The Communist Manifesto - Mark and Engels"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Communist Manifesto - Mark and Engels"], ["list_id", 33], ["created_at", "2020-04-27 22:30:29.769938"], ["updated_at", "2020-04-27 22:30:29.769938"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Histories"], ["card_id", 83], ["created_at", "2020-04-27 22:30:29.771542"], ["updated_at", "2020-04-27 22:30:29.771542"]]
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 9.0ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/api/lists" for 127.0.0.1 at 2020-04-27 17:34:57 -0500
+Processing by Api::ListsController#create as JSON
+  Parameters: {"board_id"=>13, "list"=>{"title"=>"Poetry"}}
+Can't verify CSRF token authenticity.
+  [1m[36mBoard Load (0.2ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "lists" ("title", "board_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Poetry"], ["board_id", 13], ["created_at", "2020-04-27 22:34:57.969043"], ["updated_at", "2020-04-27 22:34:57.969043"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/lists/create.json.jbuilder
+  Rendered api/lists/create.json.jbuilder (0.5ms)
+Completed 200 OK in 19ms (Views: 9.3ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:35:23 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"Agamemnon - Aeschylus"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Agamemnon - Aeschylus"], ["list_id", 34], ["created_at", "2020-04-27 22:35:23.191410"], ["updated_at", "2020-04-27 22:35:23.191410"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 84], ["created_at", "2020-04-27 22:35:23.192762"], ["updated_at", "2020-04-27 22:35:23.192762"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.7ms)
+Completed 200 OK in 22ms (Views: 9.2ms | ActiveRecord: 6.9ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:35:41 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"Oedipus the King - Sophocles"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Oedipus the King - Sophocles"], ["list_id", 34], ["created_at", "2020-04-27 22:35:41.742226"], ["updated_at", "2020-04-27 22:35:41.742226"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 85], ["created_at", "2020-04-27 22:35:41.743559"], ["updated_at", "2020-04-27 22:35:41.743559"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.9ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:35:53 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"Medea - Euripides"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Medea - Euripides"], ["list_id", 34], ["created_at", "2020-04-27 22:35:53.701686"], ["updated_at", "2020-04-27 22:35:53.701686"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 86], ["created_at", "2020-04-27 22:35:53.703077"], ["updated_at", "2020-04-27 22:35:53.703077"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.7ms)
+Completed 200 OK in 22ms (Views: 9.0ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:36:08 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"The Birds - Aristophanes"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Birds - Aristophanes"], ["list_id", 34], ["created_at", "2020-04-27 22:36:08.385082"], ["updated_at", "2020-04-27 22:36:08.385082"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 87], ["created_at", "2020-04-27 22:36:08.386458"], ["updated_at", "2020-04-27 22:36:08.386458"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.7ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:36:18 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"Poetics - Aristotle"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Poetics - Aristotle"], ["list_id", 34], ["created_at", "2020-04-27 22:36:18.450317"], ["updated_at", "2020-04-27 22:36:18.450317"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 88], ["created_at", "2020-04-27 22:36:18.451611"], ["updated_at", "2020-04-27 22:36:18.451611"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 23ms (Views: 8.9ms | ActiveRecord: 7.1ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:36:46 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"Everyman - 14th Century"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Everyman - 14th Century"], ["list_id", 34], ["created_at", "2020-04-27 22:36:46.552091"], ["updated_at", "2020-04-27 22:36:46.552091"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 89], ["created_at", "2020-04-27 22:36:46.553624"], ["updated_at", "2020-04-27 22:36:46.553624"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 24ms (Views: 10.4ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:37:04 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"Doctor Faustus - Christopher Marlowe"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Doctor Faustus - Christopher Marlowe"], ["list_id", 34], ["created_at", "2020-04-27 22:37:04.037545"], ["updated_at", "2020-04-27 22:37:04.037545"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 90], ["created_at", "2020-04-27 22:37:04.038855"], ["updated_at", "2020-04-27 22:37:04.038855"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 22ms (Views: 8.9ms | ActiveRecord: 6.9ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:37:28 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"Richard III - William Shakespeare"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Richard III - William Shakespeare"], ["list_id", 34], ["created_at", "2020-04-27 22:37:28.175231"], ["updated_at", "2020-04-27 22:37:28.175231"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 91], ["created_at", "2020-04-27 22:37:28.176794"], ["updated_at", "2020-04-27 22:37:28.176794"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 23ms (Views: 9.7ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:37:52 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"A Midsummer Night's Dream - Shakespeare"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "A Midsummer Night's Dream - Shakespeare"], ["list_id", 34], ["created_at", "2020-04-27 22:37:52.894931"], ["updated_at", "2020-04-27 22:37:52.894931"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 92], ["created_at", "2020-04-27 22:37:52.896472"], ["updated_at", "2020-04-27 22:37:52.896472"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 21ms (Views: 8.6ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:38:10 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"Hamlet - Shakespeare"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Hamlet - Shakespeare"], ["list_id", 34], ["created_at", "2020-04-27 22:38:10.778853"], ["updated_at", "2020-04-27 22:38:10.778853"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 93], ["created_at", "2020-04-27 22:38:10.780728"], ["updated_at", "2020-04-27 22:38:10.780728"]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 25ms (Views: 8.9ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:38:34 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"Tartuffe - Molière"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.1ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Tartuffe - Molière"], ["list_id", 34], ["created_at", "2020-04-27 22:38:34.037475"], ["updated_at", "2020-04-27 22:38:34.037475"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 94], ["created_at", "2020-04-27 22:38:34.038622"], ["updated_at", "2020-04-27 22:38:34.038622"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.7ms)
+Completed 200 OK in 21ms (Views: 9.0ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:38:49 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"The Way of the World - William Congreve"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The Way of the World - William Congreve"], ["list_id", 34], ["created_at", "2020-04-27 22:38:49.664297"], ["updated_at", "2020-04-27 22:38:49.664297"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 95], ["created_at", "2020-04-27 22:38:49.665670"], ["updated_at", "2020-04-27 22:38:49.665670"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.6ms)
+Completed 200 OK in 20ms (Views: 7.7ms | ActiveRecord: 6.9ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:39:10 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"She Stoops to Conquer - Oliver Goldsmith"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.2ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "She Stoops to Conquer - Oliver Goldsmith"], ["list_id", 34], ["created_at", "2020-04-27 22:39:10.368295"], ["updated_at", "2020-04-27 22:39:10.368295"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 96], ["created_at", "2020-04-27 22:39:10.369763"], ["updated_at", "2020-04-27 22:39:10.369763"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.5ms)
+Completed 200 OK in 16ms (Views: 7.5ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/api/cards" for 127.0.0.1 at 2020-04-27 17:39:30 -0500
+Processing by Api::CardsController#create as JSON
+  Parameters: {"list_id"=>34, "card"=>{"title"=>"The School for Scandal - Richard Sheridan"}}
+Can't verify CSRF token authenticity.
+  [1m[36mList Load (0.3ms)[0m  [1m[34mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cards" ("title", "list_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "The School for Scandal - Richard Sheridan"], ["list_id", 34], ["created_at", "2020-04-27 22:39:30.298359"], ["updated_at", "2020-04-27 22:39:30.298359"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "card_actions" ("description", "card_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "added this card to Poetry"], ["card_id", 97], ["created_at", "2020-04-27 22:39:30.299741"], ["updated_at", "2020-04-27 22:39:30.299741"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/cards/create.json.jbuilder
+  Rendered api/cards/create.json.jbuilder (0.5ms)
+Completed 200 OK in 21ms (Views: 7.8ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-04-29 09:44:31 -0500
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 2132ms (Views: 2130.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/boards" for 127.0.0.1 at 2020-04-29 09:44:34 -0500
+Processing by Api::BoardsController#index as JSON
+  Rendering api/boards/index.json.jbuilder
+  [1m[36mBoard Load (5.9ms)[0m  [1m[34mSELECT "boards".* FROM "boards"[0m
+  Rendered api/boards/index.json.jbuilder (27.5ms)
+Completed 200 OK in 48ms (Views: 20.4ms | ActiveRecord: 15.4ms)
+
+
+Started GET "/api/boards/13" for 127.0.0.1 at 2020-04-29 09:44:35 -0500
+Processing by Api::BoardsController#show as JSON
+  Parameters: {"id"=>"13"}
+  [1m[36mBoard Load (0.3ms)[0m  [1m[34mSELECT  "boards".* FROM "boards" WHERE "boards"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering api/boards/show.json.jbuilder
+  [1m[36mList Load (6.8ms)[0m  [1m[34mSELECT "lists".* FROM "lists" WHERE "lists"."board_id" = $1[0m  [["board_id", 13]]
+  [1m[36mCard Load (6.0ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 31]]
+  [1m[36mCard Load (0.2ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 32]]
+  [1m[36mCard Load (0.4ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 33]]
+  [1m[36mCard Load (0.3ms)[0m  [1m[34mSELECT "cards".* FROM "cards" WHERE "cards"."list_id" = $1[0m  [["list_id", 34]]
+  Rendered api/boards/show.json.jbuilder (76.4ms)
+Completed 200 OK in 96ms (Views: 67.4ms | ActiveRecord: 19.0ms)
+
+
